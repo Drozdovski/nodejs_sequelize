@@ -3,13 +3,9 @@ var router = express.Router();
 var models = require('../models/index');
 
 
-router.get('/', function(req, res, next) {
-  res.render('index', { title: 'Express' });
-});
-
 
 // get all todos
-router.get('/todos', function(req, res) {
+router.get('/', function(req, res) {
   models.Todo.findAll({}).then(function(todos) {
     res.json(todos);
   });
@@ -27,7 +23,7 @@ router.get('/todo/:id', function(req, res) {
 });
 
 // add new todo
-router.post('/todos', function(req, res) {
+router.post('/', function(req, res) {
   models.Todo.create({
     title: req.body.title,
     description: req.body.description,
