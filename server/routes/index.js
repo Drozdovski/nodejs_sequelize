@@ -9,7 +9,7 @@ router.get('/', function(req, res, next) {
 
 
 // get all todos
-router.get('/todos', function(req, res) {
+router.get('/tasks.json', function(req, res) {
   models.Todo.findAll({}).then(function(todos) {
     res.json(todos);
   });
@@ -27,7 +27,7 @@ router.get('/todo/:id', function(req, res) {
 });
 
 // add new todo
-router.post('/todos', function(req, res) {
+router.post('/tasks.json', function(req, res) {
   models.Todo.create({
     title: req.body.title,
     description: req.body.description,
