@@ -33,6 +33,10 @@ router.post('/tasks.json', function(req, res) {
     description: req.body.description,
     priority: req.body.priority
   }).then(function(todo) {
+    //add status 201
+    res.json(todo);
+  }).catch(function(error) {
+    //add status 422
     res.json(todo);
   });
 });
@@ -41,7 +45,7 @@ router.post('/tasks.json', function(req, res) {
 router.put('/todo/:id', function(req, res) {
   models.Todo.find({
     where: {
-      id: req.params.id
+      id: req.body.id
     }
   }).then(function(todo) {
     if(todo){
